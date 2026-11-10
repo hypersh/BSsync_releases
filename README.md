@@ -1,36 +1,47 @@
 # BS Sync Releases
 
-BS Sync의 Windows 설치파일을 제공하는 공개 다운로드 저장소이다. 애플리케이션 소스는 비공개 저장소에서 관리하며, 이 저장소에는 포함하지 않는다.
+BS Sync의 Windows 설치파일과 체크섬을 제공하는 공개 다운로드 저장소입니다. 애플리케이션 소스는 비공개 저장소에서 관리합니다.
 
-## BS Sync 2.0.5 다운로드
+## BS Sync 3.0.1 다운로드
 
 - [최신 Release](https://github.com/hypersh/BSsync_releases/releases/latest)
-- [2.0.5 설치파일 — BS_Sync_v205.exe](https://github.com/hypersh/BSsync_releases/releases/download/v2.0.5/BS_Sync_v205.exe)
-- [SHA-256 체크섬](https://github.com/hypersh/BSsync_releases/releases/download/v2.0.5/BS_Sync_v205.exe.sha256)
+- [3.0.1 설치파일 — BS_Sync301.exe](https://github.com/hypersh/BSsync_releases/releases/download/v3.0.1/BS_Sync301.exe)
+- [SHA-256 체크섬](https://github.com/hypersh/BSsync_releases/releases/download/v3.0.1/BS_Sync301.exe.sha256)
+- [변경 사항과 검증 범위](https://github.com/hypersh/BSsync_releases/releases/tag/v3.0.1)
 
-설치파일은 기존 설치를 업데이트하거나 새로 설치한다. 설치된 앱 이름은 `BS_Sync.exe`로 유지한다. 작업 목록·동기화 기록·복구 파일을 지울 필요가 없다.
+앱과 바로가기 이름은 **BS Sync 301**입니다. 2026-10-22 최종 개선본을 2026-11-10에 검증하여 게시했으며, 원본 설치파일을 유지했습니다.
 
-## 주요 기능과 이번 업데이트
+## 주요 기능
 
-- 폴더 A/B의 동기화, 방향을 지정하는 미러, 백업 모드.
-- 현재 파일 상태를 우선하는 A/B 수동 선택과 폴더 하위 항목 반영.
-- 분석 제외 항목 보존, 실행 전 확인, 진행 표시, 중지 및 완료/부분완료/오류 기록.
-- 검은 배경과 밝은 글씨, 테두리 없는 사각형 버튼, 검은 Windows 제목줄.
+- A/B 방향 복사와 파일별 변경 이력을 사용하는 동기화.
+- 독립된 양쪽 변경에 대한 사용자 선택과 실행 전 변경 확인.
+- 문제 항목의 상태·이유·권장 조치 표시 및 전체 결과 CSV·JSON 저장.
+- 하위 경로와 내용이 정확히 대응하는 폴더의 전체 이름 변경.
+- 최초 파일·변경 후보 중심의 기본 분석과 선택 가능한 정밀 검사.
 
-같은 작업 폴더를 여러 PC에서 사용하면 모든 PC를 2.0.5로 맞춘다. 미러와 A/B 상태 반영은 선택한 기준에 따라 반대편 파일을 삭제할 수 있으므로 비교 결과와 방향을 확인한 뒤 실행한다.
+## 설치와 첫 분석
 
-## 검증 범위
+3.0.1은 전용 설치 경로와 `_BS_Sync_Data_v3` 기록을 사용하는 독립 앱입니다. 구버전 기록을 자동 이관하지 않습니다. v3 기록이 없으면 선택한 A/B 폴더의 현재 파일로 새 기록을 만듭니다.
 
-기능 자동 시험 154개(Linux)와 Windows UI 시험 10개를 통과하였다. Windows 설치파일을 빌드하고, 앱을 임시 DB로 열고 정상 종료하였다. Windows 11에서 제목줄 표시와 재표시도 확인하였다. 설치 프로그램 자체의 실제 설치/업데이트, 실제 외부 저장장치와 클라우드 동작은 이번 최종 점검 범위에 포함하지 않았다.
+첫 동기화에서는 과거 삭제 여부를 알 수 없으므로 한쪽에만 있는 파일을 다른 쪽에 복사합니다. 복사 모드는 지정한 기준 방향을 따르며 대상에만 있는 파일을 삭제합니다. 실행 전 계획과 삭제 범위를 확인하세요. 기존 v3 기록·미완료 복구 기록을 유지하고, 구버전 기록·이전본은 제외 대상으로 보존합니다.
 
----
+## 검증
+
+2026-11-10 노트북 전체 unittest에서 299개 중 298개 통과, 1개 건너뜀(심볼릭 링크 생성 권한), 실패·오류 없음. 원본 소스 manifest 75개 파일과 설치파일의 SHA-256을 확인했습니다.
+
+2026-10-22 Windows 빌드와 패키지 자체 실행 성공 기록을 보존합니다. 이번 게시에서는 재빌드·재설치하지 않았습니다. 최종 개선본 실제 설치·재설치 및 실제 SSD·UNC·물리적 연결 단절 시험은 별도입니다.
+
+설치파일 SHA-256:
+
+```text
+3bf4f3cbaa269842bf47e164f0e4f24c2c85ffff6fd33de628eb55eeade5f10f
+```
+
+이전 배포본은 [전체 릴리스 목록](https://github.com/hypersh/BSsync_releases/releases)에 보존합니다.
 
 ## English
 
-This public repository contains Windows installers and checksums for BS Sync. Application source code is maintained privately.
+Download [BS Sync 3.0.1](https://github.com/hypersh/BSsync_releases/releases/tag/v3.0.1) and run `BS_Sync301.exe`. This version uses its own v3 installation and history. It does not migrate v2 history automatically. A first sync starts from current files; one-sided files are copied because previous deletions are unknown.
 
-Download [BS Sync 2.0.5](https://github.com/hypersh/BSsync_releases/releases/tag/v2.0.5), then run `BS_Sync_v205.exe` to install or update the app. Existing task settings and recovery data are retained by the installer configuration.
+The original October 22 installer was verified and published on November 10, 2026. The current source test run passed 298 tests with one permission-related skip. This publication did not rebuild or reinstall the app.
 
-Version 2.0.5 supports Sync, Mirror and Backup modes, manual A/B choices based on current files, exclusion preservation and operation history. The final UI update adds dark surfaces, borderless rectangular buttons and black Windows title bars without changing the 2.0.5 synchronization engine.
-
-Update every PC sharing the same workspace to 2.0.5. Review planned changes and deletion directions before execution. The installer was built and the app launch was checked; installation on the target system remains a separate check.
