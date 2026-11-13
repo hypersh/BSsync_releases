@@ -1,0 +1,89 @@
+name: Bug report
+description: Report a problem with BS Sync. English and Korean are welcome.
+title: "[Bug]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve BS Sync. You may write in English or Korean.
+
+        **This issue will be public.** Replace private filenames and paths with dummy examples. Remove passwords, account details, server addresses, and personal information from any text or images you choose to share.
+
+        Attachments are optional. Do not upload original documents, an entire folder, or your full app database. A short description and steps using test files are enough to start.
+  - type: input
+    id: app_version
+    attributes:
+      label: BS Sync version
+      description: The version shown by the app or installer.
+      placeholder: "3.1.0"
+    validations:
+      required: true
+  - type: input
+    id: windows_version
+    attributes:
+      label: Windows version
+      placeholder: "Windows 11 x64, version 24H2"
+    validations:
+      required: true
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Task mode
+      options:
+        - Sync
+        - Copy (Mirror), A to B
+        - Copy (Mirror), B to A
+        - Installation or another screen
+        - Not sure
+    validations:
+      required: true
+  - type: dropdown
+    id: storage
+    attributes:
+      label: Folder locations
+      description: Select the types involved. Do not include private paths or server addresses.
+      multiple: true
+      options:
+        - Local disk
+        - External or USB drive
+        - Network or UNC share
+        - Not applicable or not sure
+  - type: dropdown
+    id: language
+    attributes:
+      label: App language
+      options:
+        - English
+        - Korean
+        - Not applicable
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Include the direction and A/B choices you made. If possible, use a small example with test files.
+      placeholder: |
+        1. In test folder A, create example.txt containing ...
+        2. In test folder B, ...
+        3. Select ..., click Analyze, choose ..., then ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result
+      placeholder: What should have happened?
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual result
+      description: Describe what happened and whether the app showed Complete, Partial, or an error. Redact private details from error text.
+    validations:
+      required: true
+  - type: textarea
+    id: optional_details
+    attributes:
+      label: Optional details
+      description: Relevant sanitized error text, a small report excerpt, or a screenshot may help. All attachments are optional; do not share sensitive files or the full database.
+      placeholder: Include only information you are comfortable publishing.

@@ -1,47 +1,42 @@
-# BS Sync Releases
+# BS Sync
 
-BS Sync의 Windows 설치파일과 체크섬을 제공하는 공개 다운로드 저장소입니다. 애플리케이션 소스는 비공개 저장소에서 관리합니다.
+Folder synchronization for Windows, with changes you can review before applying them. **Free for personal and business use.**
 
-## BS Sync 3.0.1 다운로드
+## Download
 
-- [최신 Release](https://github.com/hypersh/BSsync_releases/releases/latest)
-- [3.0.1 설치파일 — BS_Sync301.exe](https://github.com/hypersh/BSsync_releases/releases/download/v3.0.1/BS_Sync301.exe)
-- [SHA-256 체크섬](https://github.com/hypersh/BSsync_releases/releases/download/v3.0.1/BS_Sync301.exe.sha256)
-- [변경 사항과 검증 범위](https://github.com/hypersh/BSsync_releases/releases/tag/v3.0.1)
+**[Download BS Sync 3.1.0 for Windows x64](https://github.com/hypersh/BSsync_releases/releases/download/v3.1.0/BS_Sync310.exe)**
 
-앱과 바로가기 이름은 **BS Sync 301**입니다. 2026-10-22 최종 개선본을 2026-11-10에 검증하여 게시했으며, 원본 설치파일을 유지했습니다.
+[SHA-256 checksum](https://github.com/hypersh/BSsync_releases/releases/download/v3.1.0/BS_Sync310.exe.sha256) · [Latest release](https://github.com/hypersh/BSsync_releases/releases/latest) · [Official website](https://tools.bsbiotec.com/bs-sync.php)
 
-## 주요 기능
+Installer: `BS_Sync310.exe` · 17,066,108 bytes · Tested on Windows 11 x64 · English and Korean interface
 
-- A/B 방향 복사와 파일별 변경 이력을 사용하는 동기화.
-- 독립된 양쪽 변경에 대한 사용자 선택과 실행 전 변경 확인.
-- 문제 항목의 상태·이유·권장 조치 표시 및 전체 결과 CSV·JSON 저장.
-- 하위 경로와 내용이 정확히 대응하는 폴더의 전체 이름 변경.
-- 최초 파일·변경 후보 중심의 기본 분석과 선택 가능한 정밀 검사.
+English · [한국어](README.ko.md)
 
-## 설치와 첫 분석
+## Start in three steps
 
-3.0.1은 전용 설치 경로와 `_BS_Sync_Data_v3` 기록을 사용하는 독립 앱입니다. 구버전 기록을 자동 이관하지 않습니다. v3 기록이 없으면 선택한 A/B 폴더의 현재 파일로 새 기록을 만듭니다.
+1. **Install and choose your language.** Open **BS Sync 3**, then select **English** or **한국어** at the top right.
+2. **Choose folders A and B and a mode.** Use **Sync** for changes in both directions, or **Copy** for a mirror in the selected direction.
+3. **Analyze, review, then run.** Choose **Use A**, **Use B**, **Delete both**, or **On hold** where needed. Check proposed deletions before selecting **Run sync** or **Run copy**.
 
-첫 동기화에서는 과거 삭제 여부를 알 수 없으므로 한쪽에만 있는 파일을 다른 쪽에 복사합니다. 복사 모드는 지정한 기준 방향을 따르며 대상에만 있는 파일을 삭제합니다. 실행 전 계획과 삭제 범위를 확인하세요. 기존 v3 기록·미완료 복구 기록을 유지하고, 구버전 기록·이전본은 제외 대상으로 보존합니다.
+For a first run, try a small test folder. [Read the Quick Start](docs/QUICK_START.md) for the choices, recovery locations, and download verification.
 
-## 검증
+## Choose the right mode
 
-2026-11-10 노트북 전체 unittest에서 299개 중 298개 통과, 1개 건너뜀(심볼릭 링크 생성 권한), 실패·오류 없음. 원본 소스 manifest 75개 파일과 설치파일의 SHA-256을 확인했습니다.
+| Mode in the app | What it does |
+|---|---|
+| **Sync** | Applies verified changes in both directions, including known deletions. Conflicting independent changes wait for your choice; modification time alone does not select a winner. |
+| **Copy (Mirror)** | Makes the destination match the selected source, A → B or B → A. **Destination-only files and folders are deleted.** Excluded items remain protected. |
 
-2026-10-22 Windows 빌드와 패키지 자체 실행 성공 기록을 보존합니다. 이번 게시에서는 재빌드·재설치하지 않았습니다. 최종 개선본 실제 설치·재설치 및 실제 SSD·UNC·물리적 연결 단절 시험은 별도입니다.
+BS Sync verifies copied contents and records unfinished operations for recovery. Sync keeps previous versions; Copy lets you choose whether to keep them. English/Korean switching, selection and recovery fixes, and faster repeated analysis and small-file copying are included in 3.1.0.
 
-설치파일 SHA-256:
+## Installer signature
 
-```text
-3bf4f3cbaa269842bf47e164f0e4f24c2c85ffff6fd33de628eb55eeade5f10f
-```
+The current installer is **not digitally signed**; Windows reports `NotSigned` and may display a warning. Use the official download above and [verify its SHA-256](docs/QUICK_START.md#verify-the-download). A matching checksum checks the downloaded file, but does not provide a publisher signature. Follow your organization's security policy; do not disable Windows protection to install the app.
 
-이전 배포본은 [전체 릴리스 목록](https://github.com/hypersh/BSsync_releases/releases)에 보존합니다.
+## Help and project information
 
-## English
+- [Quick Start and FAQ](docs/QUICK_START.md) · [한국어 시작 안내](docs/QUICK_START.ko.md)
+- [Report a bug](https://github.com/hypersh/BSsync_releases/issues/new?template=bug_report.yml) — English or Korean is welcome; attachments are optional.
+- [English website](https://tools.bsbiotec.com/bs-sync.php) · [한국어 웹사이트](https://tools.bsbiotec.com/ko/bs-sync.php)
 
-Download [BS Sync 3.0.1](https://github.com/hypersh/BSsync_releases/releases/tag/v3.0.1) and run `BS_Sync301.exe`. This version uses its own v3 installation and history. It does not migrate v2 history automatically. A first sync starts from current files; one-sided files are copied because previous deletions are unknown.
-
-The original October 22 installer was verified and published on November 10, 2026. The current source test run passed 298 tests with one permission-related skip. This publication did not rebuild or reinstall the app.
-
+This repository hosts installers and user documentation. BS Sync is not open source; the application source is private. Personal and business use are free.
